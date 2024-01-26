@@ -254,3 +254,8 @@ def api_show_location(request, pk):
             encoder=LocationDetailEncoder,
             safe=False,
         )
+
+@require_http_methods(["GET"])
+def api_list_states(request):
+    states_list = []
+    states.State.objects 

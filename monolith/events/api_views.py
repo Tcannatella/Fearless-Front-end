@@ -257,5 +257,9 @@ def api_show_location(request, pk):
 
 @require_http_methods(["GET"])
 def api_list_states(request):
-    states_list = []
-    states.State.objects 
+    states = State.objects.all().order_by('name')
+    state_list = []
+    for state in states:
+        state_dict = {"name": state.name, "abbreviation": state.abbreviation}
+        state_list.append(state_dict)
+    return JsonResponse({"states": state_list})

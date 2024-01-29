@@ -12,6 +12,7 @@ class LocationListEncoder(ModelEncoder):
     properties = [
         "name",
         "picture_url",
+        "id",
         ]
 
 
@@ -32,7 +33,7 @@ class LocationDetailEncoder(ModelEncoder):
 
 class ConferenceListEncoder(ModelEncoder):
     model = Conference
-    properties = ["name"]
+    properties = ["name", "id",]
 
 
 class ConferenceDetailEncoder(ModelEncoder):
@@ -98,6 +99,7 @@ def api_list_conferences(request):
             encoder=ConferenceDetailEncoder,
             safe=False,
         )
+
 
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_show_conference(request, pk):

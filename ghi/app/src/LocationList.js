@@ -1,13 +1,13 @@
 import { useState, useEffect} from 'react';
 
-function AttendeesList() {
-  const [attendees, setAttendees] = useState([])
+function LocationList() {
+  const [locations, setLocations] = useState([])
 
   const getData = async ()=> {
-    const response = await fetch('http://localhost:8001/api/attendees/');
+    const response = await fetch('http://localhost:8000/api/locations/');
     if (response.ok) {
-      const { attendees } = await response.json();
-      setAttendees(attendees);
+      const { locations } = await response.json();
+      setLocations(locations);
     } else {
       console.error('An error occurred fetching the data')
     }
@@ -20,21 +20,21 @@ function AttendeesList() {
   return (
     <div className="my-5 container">
       <div className="row">
-        <h1>Current Attendees</h1>
+        <h1>Locations</h1>
 
         <table className="table table-striped m-3">
           <thead>
             <tr>
+              <th>Id</th>
               <th>Name</th>
-              <th>Conference</th>
             </tr>
           </thead>
           <tbody>
-            {attendees.map(attendee => {
+            {locations.map(location => {
               return (
-                <tr key={attendee.href}>
-                  <td>{ attendee.name }</td>
-                  <td>{ attendee.conference }</td>
+                <tr key={location.href}>
+                  <td>{ location.id }</td>
+                  <td>{ location.name }</td>
                 </tr>
               );
             })}
@@ -45,4 +45,4 @@ function AttendeesList() {
   );
 }
 
-export default AttendeesList;
+export default LocationList;

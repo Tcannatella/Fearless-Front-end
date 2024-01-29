@@ -55,7 +55,7 @@ function ConferenceForm() {
         description: '',
         max_presentations: '',
         max_attendees: '',
-        location: ''
+        location: '',
       });
     }
   }
@@ -102,7 +102,7 @@ function ConferenceForm() {
 
             <div className="mb-3">
               <label htmlFor="description">Description</label>
-              <textarea onChange={handleFormChange} value={formData.description} className="form-control" id="description" rows="3" name="description" className="form-control"></textarea>
+              <textarea onChange={handleFormChange} value={formData.description} className="form-control" id="description" rows="3" name="description"></textarea>
             </div>
 
             <div className="form-floating mb-3">
